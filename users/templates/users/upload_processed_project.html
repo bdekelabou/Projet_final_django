@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chargement du Projet Traité</title>
+</head>
+<body>
+    <h1>Chargement du Projet Traité</h1>
+    
+    <p>Merci d'utiliser notre plateforme pour charger votre projet traité.</p>
+    
+    <form action="{% url 'upload_processed_project' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Sélectionnez le fichier de votre projet traité :</label>
+        <input type="file" name="file" required>
+        <button type="submit">Télécharger</button>
+    </form>
+    
+    <a href="{% url 'dashboard' %}">Retour au Tableau de bord</a>
+</body>
+</html>

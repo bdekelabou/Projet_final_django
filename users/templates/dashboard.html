@@ -1,0 +1,42 @@
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <header>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <h1>Dashboard</h1>
+    </header>
+    <div class="content">
+  <h2>Tableau de bord</h2>
+  <p>Bienvenue sur votre tableau de bord.</p>
+  
+  <!-- Étape 1 : Chargement du projet par l'enseignant -->
+  <a href="{% url 'upload_project' %}" class="btn btn-primary">Charger un projet</a>
+  
+  <!-- Étape 2 : Téléchargement du projet par l'étudiant -->
+  {% for assignment in student_assignments %}
+    <div>
+      <h3>{{ assignment.project.title }}</h3>
+      <p>{{ assignment.project.subject }}</p>
+      <a href="{{ assignment.uploaded_file.url }}" class="btn btn-primary">Télécharger le projet</a>
+    </div>
+  {% endfor %}
+  
+  <!-- Étape 3 : Chargement du projet traité par l'étudiant -->
+  <a href="{% url 'upload_processed_project' %}" class="btn btn-primary">Charger le projet traité</a>
+  
+  <!-- Étape 4 : Téléchargement du projet soumis par l'étudiant par l'enseignant -->
+  {% for assignment in all_submitted_assignments %}
+    <div>
+      <h3>{{ assignment.project.title }}</h3>
+      <p>{{ assignment.project.subject }}</p>
+      <a href="{% url 'download_submitted_project' assignment.id %}" class="btn btn-primary">Télécharger le projet soumis</a>
+    </div>
+  {% endfor %}
+
+</div>
+</div>
+
+
+{% endblock %}

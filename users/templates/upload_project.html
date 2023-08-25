@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chargement du Projet par l'Enseignant</title>
+</head>
+<body>
+    <h1>Chargement du Projet par l'Enseignant</h1>
+    
+    <p>Charger les instructions et les fichiers du projet pour les étudiants :</p>
+    
+    <form action="{% url 'upload_project' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="project_title">Intitulé du Projet :</label>
+        <input type="text" name="project_title" required><br><br>
+        
+        <label for="subject">Matière :</label>
+        <input type="text" name="subject" required><br><br>
+        
+        <label for="project_file">Fichier du Projet :</label>
+        <input type="file" name="project_file" required><br><br>
+        
+        <button type="submit">Charger le Projet</button>
+    </form>
+    
+    <a href="{% url 'dashboard' %}">Retour au Tableau de Bord</a>
+</body>
+</html>

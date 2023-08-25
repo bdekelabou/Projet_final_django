@@ -1,0 +1,9 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% block content %}
+  <h2>Détails du projet</h2>
+  <h3>{{ project.title }}</h3>
+  <p>Matière : {{ project.subject }}</p>
+  <p>Statut : {{ project.get_status_display }}</p>
+  <a href="{{ project.file.url }}" download>Télécharger le projet</a>
+{% endblock %}

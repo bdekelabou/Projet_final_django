@@ -1,0 +1,19 @@
+
+
+
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="signup-form">
+    <h2>Inscription</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+{% endblock %}
